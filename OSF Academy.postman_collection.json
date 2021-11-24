@@ -1,0 +1,599 @@
+{
+  "info": {
+    "_postman_id": "d7bea507-ad67-4f2a-85f4-9dcb4b7aadb3",
+    "name": "OSF Academy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Product Search By Category ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/product_search?primary_category_id=womens-clothing-tops&secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "product_search"
+              ],
+              "query": [
+                {
+                  "key": "primary_category_id",
+                  "value": "womens-clothing-tops"
+                },
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Product Search By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/product_search?id=25565189&secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "product_search"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "25565189"
+                },
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "Get Category By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories/:id-of-the-category?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                ":id-of-the-category"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id-of-the-category",
+                  "value": "mens-clothing-jackets"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category By Parent ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories/parent/:id-of-the-parent-category?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories",
+                "parent",
+                ":id-of-the-parent-category"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id-of-the-parent-category",
+                  "value": "mens-clothing"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "SignUp",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"secretKey\": \"{{secretKey}}\",\r\n    \"name\": \"aaa\",\r\n    \"email\": \"aaa@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SignIn",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"secretKey\": \"{{secretKey}}\",\r\n    \"email\": \"aaa@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/signin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "signin"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ1OGRmYTRiLTI0NTUtNGUxOC04YWRhLTJmMjM1MTMzM2M5OSIsImVtYWlsIjoiZGFuaWxvQHRlc3RlLmNvbSIsImlhdCI6MTYwMDU0NTMyOCwiZXhwIjoxNjAwNzE4MTI4fQ.G4b8FJS6moZbZ_bIo83aUDVPK1OddZ9VQ8KHKDJ6Y9o",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/cart?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Quanity of Item",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544304\",\r\n\t\"quantity\":\"0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/cart/changeItemQuantity",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "changeItemQuantity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Item To Cart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544250\",\r\n\t\"quantity\":\"2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/cart/addItem",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "addItem"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Item From Cart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544250\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/cart/removeItem",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "removeItem"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Wishlist",
+      "item": [
+        {
+          "name": "Get Wishlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/wishlist?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wishlist"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Quantity of Item",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544304\",\r\n\t\"quantity\":\"3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/wishlist/changeItemQuantity",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wishlist",
+                "changeItemQuantity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Item To Wishlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544250\",\r\n\t\"quantity\":\"2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/wishlist/addItem",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wishlist",
+                "addItem"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Item From Wishlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"secretKey\": \"{{secretKey}}\",\r\n\t\"productId\": \"86736845\",\r\n\t\"variantId\": \"883360544250\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/wishlist/removeItem",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "wishlist",
+                "removeItem"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Get Orders",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders?secretKey={{secretKey}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "secretKey",
+                  "value": "{{secretKey}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"secretKey\": \"{{secretKey}}\",\r\n    \"address\": \"address\",\r\n    \"paymentId\": \"1\",\r\n    \"items\": [\r\n        {\r\n            \"variant\": {\r\n                \"variation_values\": {\r\n                    \"color\": \"C43\",\r\n                    \"size\": \"33\"\r\n                },\r\n                \"price\": 145,\r\n                \"product_id\": \"883360544250\",\r\n                \"orderable\": true\r\n            },\r\n            \"productId\": \"86736845\",\r\n            \"quantity\": 11\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "variable": [
+    {
+      "id": "13002ba6-1213-4565-bca0-2964ac7a233e",
+      "key": "base_url",
+      "value": "https://osf-digital-backend-academy.herokuapp.com/api/"
+    },
+    {
+      "id": "a5f2a3bc-ad63-49d2-9aca-1f1f4af41c97",
+      "key": "secretKey",
+      "value": "your_key_from_OSF"
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
