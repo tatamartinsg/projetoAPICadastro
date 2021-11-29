@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000
 
 conexao.connect(erro => {
     if(erro){
-        console.log("Erro ao conectar com o banco de dados")
+        console.log("Erro ao conectar com o banco de dados:", erro)
     }
     else{
         CreateTable.init(conexao)

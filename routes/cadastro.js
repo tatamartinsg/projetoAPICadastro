@@ -94,7 +94,7 @@ module.exports = app => {
         }
         else{
             console.log("Caracteres no email são insuficientes (menor que 12)")
-            res.status(400).json({message:"Caracteres no email são insuficientes (menor que 12)"})
+            res.status(400).json({message:"Email inválido!", erro: 'Caracteres no email são insuficientes (menor que 12)'})
         }
     
      })

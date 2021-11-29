@@ -2,58 +2,9 @@ const SelectDB = require('../models/selectDB')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const Cadastro = require('../models/cadastroBD')
+const verifyJWT = require('../middleware/login')
 
 module.exports = app => {
-    // const authMiddleware = async (req,res,next) => {
-    //     try{
-    //         // console.log(req)
-    //         const token = req.headers.authorization.split(' ')[1].toString()
-    //         const tokenKEY = this.toString(process.env.JWT_KEY)
-    //         const payload = await jwt.verify(token, tokenKEY)
-    //         // console.log('payload:',payload)
-
-    //         await Cadastro.selecionaUsuariosPorId(payload._idUser)
-    //         .then (resultados_select => {
-    //             //  res.status(200).json({token:token})
-    //             console.log(req)
-    //             req.auth = resultados_select
-    //             next()
-    //         })
-    //         .catch(erro_select => {
-    //             res.status(400).send('Usuarios não encontrados')
-    //         })
-
-    //         // console.log(payload)
-           
-    //     } catch(error){
-    //         res.status(401).send(error)
-    //     }
-    // }
-
-    async function verifyJWT(req,res,next){
-        console.log("entrou verify")
-        console.log(req.headers)
-        const token = req.headers.authorization.split(' ')[1].toString()
-        console.log(token)
-        const tokenKEY = 'JWT_KEY-SECRET-KEY-07022002'
-        console.log(tokenKEY)
-
-        await jwt.verify(token,tokenKEY,(err,decoded)=>{
-            if(err){
-                return res.status(401).end()
-            }
-            else{ 
-                Cadastro.selecionaUsuariosPorId(decoded._idUser)
-                    .then (resultados_select => {
-                        //  res.status(200).json({token:token})
-                        req._idUser = decoded._idUser
-                        req.auth = resultados_select
-                        next()
-                    })
-            }
-        })
-            
-        }
 
     app.get('/login', (req,res)=>{
         res.send('Entrou na rota login')
@@ -91,12 +42,12 @@ module.exports = app => {
                             return res.status(200).send({message: 'Autenticado com sucesso!',auth:true,token:token})
                         }
     
-                        return res.status(401).send({message: 'Falha na autenticação da password', pass:false})
+                        return res.status(401).send({message: 'Falha na autenticação da password', message:'pass'})
                     
                     })
                 }
                 else{
-                    return res.status(401).send({message: 'Falha na autenticação do email', mail: false})
+                    return res.status(401).send({message: 'Falha na autenticação do email', message: "invalid email"})
                 }
 
             })
@@ -123,13 +74,14 @@ module.exports = app => {
     })
 
     app.get('/clientes', verifyJWT, async(req,res) => {
+        console.log('entrou')
         console.log(req._idUser)
         console.log(req)
         res.status(200).json({id: req._idUser, message: 'ok'})
     })
 
-    app.get('http://127.0.0.1:5500/clientes.html', (req,res) => {
-        console.log("Entrou get")
-        res.send("Entrou get")
+    app.post('/logout', (req,res) => {
+        res.json({auth:false, token: null})
     })
+
 }
