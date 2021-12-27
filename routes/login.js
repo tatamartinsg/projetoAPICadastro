@@ -12,7 +12,6 @@ module.exports = app => {
 
     app.post('/login', (req,res) => {
         console.log("entrou login")
-        console.log(req)
         // const a = req.headers
         // console.log(a)
         // console.log(req)
